@@ -15,7 +15,7 @@ function renderProfiles(profiles) {
   container.innerHTML = '';
 
   if (profiles.length === 0) {
-    container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">No se encontraron perfiles que coincidan con la búsqueda.</p>';
+    container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem 1rem;">No se encontraron perfiles que coincidan con los criterios de búsqueda.</p>';
     return;
   }
 
@@ -28,7 +28,6 @@ function renderProfiles(profiles) {
       ? profile.puestos.map(p => `<span class="badge">${p}</span>`).join('')
       : `<span class="badge">${profile.sector}</span>`;
 
-    // Si ha marcado "Sí" a remoto, añadimos la etiqueta especial de remoto
     if (profile.disponibleRemoto) {
       puestosBadges += `<span class="badge badge--remote">💻 Remoto</span>`;
     }
@@ -56,21 +55,24 @@ function renderProfiles(profiles) {
 function filterProfiles() {
   const text = document.getElementById('search-input').value.toLowerCase();
   const sector = document.getElementById('sector-filter').value;
+  const role = document.getElementById('role-filter').value;
   const ccaa = document.getElementById('ccaa-filter').value;
   const remoteOnly = document.getElementById('remote-filter').value;
 
   const filtered = profilesData.filter(p => {
     const matchesText = p.nombreArtistico.toLowerCase().includes(text) || 
                         p.bio.toLowerCase().includes(text) ||
-                        (p.puestos && p.puestos.some(role => role.toLowerCase().includes(text)));
+                        (p.puestos && p.puestos.some(r => r.toLowerCase().includes(text)));
     
     const matchesSector = sector === '' || p.sector === sector;
-    const matchesCCAA = ccaa === '' || p.comunidadAutonoma === ccaa;
     
-    // Lógica del filtro de remoto
+    // Filtrado por profesión específica / subcategoría
+    const matchesRole = role === '' || (p.puestos && p.puestos.includes(role));
+    
+    const matchesCCAA = ccaa === '' || p.comunidadAutonoma === ccaa;
     const matchesRemote = remoteOnly === '' || (remoteOnly === 'true' && p.disponibleRemoto === true);
 
-    return matchesText && matchesSector && matchesCCAA && matchesRemote;
+    return matchesText && matchesSector && matchesRole && matchesCCAA && matchesRemote;
   });
 
   renderProfiles(filtered);
@@ -79,6 +81,7 @@ function filterProfiles() {
 // Escuchadores de eventos
 document.getElementById('search-input').addEventListener('input', filterProfiles);
 document.getElementById('sector-filter').addEventListener('change', filterProfiles);
+document.getElementById('role-filter').addEventListener('change', filterProfiles);
 document.getElementById('ccaa-filter').addEventListener('change', filterProfiles);
 document.getElementById('remote-filter').addEventListener('change', filterProfiles);
 
