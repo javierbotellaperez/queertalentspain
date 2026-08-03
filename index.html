@@ -21,11 +21,11 @@
   <!-- BARRA DE NAVEGACIÓN -->
   <nav class="navbar">
     <div class="navbar__inner">
-      <span class="navbar__brand">Queer Talent Spain</span>
+      <span class="navbar__brand notranslate" translate="no">Queer Talent Spain</span>
       
       <div class="navbar__actions-group">
-        <!-- BOTONES DE IDIOMA EDITORIAL -->
-        <div class="lang-switch">
+        <!-- BOTONES DE IDIOMA EN TEXTO PLANO PROTEGIDOS -->
+        <div class="lang-switch notranslate" translate="no">
           <button type="button" class="lang-btn active" onclick="changeLanguage('es', this)">ES</button>
           <span class="lang-separator">/</span>
           <button type="button" class="lang-btn" onclick="changeLanguage('ca', this)">CAT</button>
@@ -50,7 +50,7 @@
   <!-- HERO SECTION -->
   <header class="hero">
     <span class="hero__tag">Directorio de Visibilidad</span>
-    <h1>Red & Talento <i>Queer</i> en la Industria Cultural</h1>
+    <h1>Red & Talento <i class="notranslate" translate="no">Queer</i> en la Industria Cultural</h1>
     <p class="hero__subtitle">
       Visibilidad, comunidad y conexiones profesionales para creadores, artistas y equipo técnico LGBTQ+ del sector audiovisual, musical y de las artes escénicas.
     </p>
@@ -69,7 +69,7 @@
     <div class="about__box">
       <h2>Reforzando la representación en la cultura</h2>
       <p>
-        <strong>Queer Talent Spain</strong> es un espacio de encuentro y catálogo público diseñado para mapear, conectar y dar visibilidad al talento LGBTQ+ en España y Catalunya. A través de diferentes disciplinas —desde la dirección de cine y la producción sonora hasta la danza y los equipos técnicos— construimos una red sólida para tejer alianzas, facilitar contrataciones éticas y combatir la infrarrepresentación en la industria.
+        <strong class="notranslate" translate="no">Queer Talent Spain</strong> es un espacio de encuentro y catálogo público diseñado para mapear, conectar y dar visibilidad al talento LGBTQ+ en España y Catalunya. A través de diferentes disciplinas —desde la dirección de cine y la producción sonora hasta la danza y los equipos técnicos— construimos una red sólida para tejer alianzas, facilitar contrataciones éticas y combatir la infrarrepresentación en la industria.
       </p>
     </div>
   </section>
@@ -189,16 +189,16 @@
   <!-- PIE DE PÁGINA Y LEGALES -->
   <footer class="footer">
     <div class="footer__container">
-      <p class="navbar__brand">Queer Talent Spain</p>
+      <p class="navbar__brand notranslate" translate="no">Queer Talent Spain</p>
       <div class="footer__links">
         <a href="#modal-privacidad" onclick="alert('Tratamiento de Datos Personales (RGPD):\n\nLos datos mostrados en este directorio han sido publicados bajo consentimiento explícito (Art. 9.2.a RGPD).\n\nPara modificar tu perfil o solicitar la eliminación total de tus datos, envía un correo a: hi@queertalentspain.com')">Política de Privacidad & RGPD</a>
         <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" rel="noopener noreferrer">Formulario de Registro</a>
       </div>
-      <p class="footer__copy">© 2026 Queer Talent Spain. Impulsando la representación en las artes y el audiovisual.</p>
+      <p class="footer__copy">© 2026 <span class="notranslate" translate="no">Queer Talent Spain</span>. Impulsando la representación en las artes y el audiovisual.</p>
     </div>
   </footer>
 
-  <!-- Script de Google Translate en segundo plano -->
+  <!-- Script de Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -208,23 +208,18 @@
       }, 'google_translate_element');
     }
 
-    // Función para activar el idioma mediante las cookies de Google Translate
     function changeLanguage(langCode, btnElement) {
-      // Marcar botón activo
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
       btnElement.classList.add('active');
 
       if (langCode === 'es') {
-        // Volver al idioma original eliminando la cookie de traducción
         document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=." + document.domain + "; path=/;";
       } else {
-        // Establecer la cookie de idioma para Google Translate
         document.cookie = "googtrans=/es/" + langCode + "; path=/;";
         document.cookie = "googtrans=/es/" + langCode + "; domain=." + document.domain + "; path=/;";
       }
       
-      // Recargar la página para aplicar la traducción limpia
       location.reload();
     }
   </script>
