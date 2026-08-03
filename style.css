@@ -1,16 +1,17 @@
-/* --- VARIABLES Y PALETA DE COLOR --- */
+/* --- PALETA DE COLOR (Estilo Claro / Queer Talent Ireland) --- */
 :root {
-  --bg-dark: #090d16;
-  --bg-card: rgba(22, 30, 46, 0.7);
-  --bg-card-hover: rgba(30, 41, 59, 0.9);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --primary-gradient: linear-gradient(135deg, #e11d48 0%, #fb7185 100%);
-  --accent-glow: rgba(225, 29, 72, 0.15);
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(225, 29, 72, 0.4);
-  --radius-lg: 16px;
-  --radius-sm: 8px;
+  --bg-color: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #111827; /* Negro/Marengo elegante */
+  --accent: #e11d48;  /* Rosa/Rojo Queer Talent */
+  --accent-light: #fff1f2;
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --radius-lg: 12px;
+  --radius-sm: 6px;
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
@@ -27,14 +28,11 @@ html {
 
 body {
   font-family: var(--font-family);
-  background-color: var(--bg-dark);
+  background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
   padding-bottom: 5rem;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(225, 29, 72, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.08) 0%, transparent 40%);
-  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* --- HERO SECTION --- */
@@ -49,10 +47,10 @@ body {
   display: inline-block;
   padding: 0.35rem 1rem;
   border-radius: 50px;
-  background: var(--accent-glow);
-  border: 1px solid rgba(225, 29, 72, 0.3);
-  color: #fb7185;
-  font-size: 0.85rem;
+  background: var(--accent-light);
+  border: 1px solid rgba(225, 29, 72, 0.2);
+  color: var(--accent);
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -60,17 +58,16 @@ body {
 }
 
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 1.25rem;
-  background: linear-gradient(135deg, #ffffff 30%, #fb7185 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
 }
 
 .hero__subtitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   max-width: 680px;
   margin: 0 auto 2.5rem;
@@ -79,7 +76,7 @@ body {
 
 .hero__actions {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -89,38 +86,37 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.9rem 1.8rem;
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .btn--primary {
-  background: var(--primary-gradient);
+  background-color: var(--text-main);
   color: #ffffff;
-  box-shadow: 0 4px 20px rgba(225, 29, 72, 0.35);
-  border: none;
+  border: 1px solid var(--text-main);
 }
 
 .btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(225, 29, 72, 0.5);
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
 }
 
 .btn--secondary {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-color);
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  backdrop-filter: blur(10px);
 }
 
 .btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  background: var(--bg-secondary);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
 }
 
 /* --- SOBRE EL PROYECTO --- */
@@ -131,25 +127,23 @@ body {
 }
 
 .about__container {
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
 .about h2 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  color: #ffffff;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
 }
 
 .about p {
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.7;
 }
 
@@ -166,44 +160,47 @@ body {
 
 .directory__header {
   margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
 }
 
 .directory__header h2 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .directory__header p {
   color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 .filters {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
-  background: var(--bg-card);
-  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+  background: var(--bg-secondary);
+  padding: 1rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(12px);
 }
 
 .filter-group {
   flex: 1;
-  min-width: 220px;
+  min-width: 200px;
 }
 
 .filter-group--search {
   flex: 2;
-  min-width: 280px;
+  min-width: 260px;
 }
 
 .filters input,
 .filters select {
   width: 100%;
-  padding: 0.85rem 1.1rem;
-  background-color: rgba(9, 13, 22, 0.6);
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   color: var(--text-main);
@@ -215,51 +212,49 @@ body {
 
 .filters input:focus,
 .filters select:focus {
-  border-color: #fb7185;
+  border-color: var(--accent);
 }
 
 /* --- GRID Y TARJETAS DE TALENTO --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  background: var(--bg-card-hover);
-  border-color: var(--border-color-hover);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
 .card__header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .card__avatar {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #fb7185;
+  border: 1px solid var(--border-color);
 }
 
 .card__info h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -267,29 +262,31 @@ body {
 .card__location {
   font-size: 0.85rem;
   color: var(--text-muted);
+  display: block;
+  margin-top: 0.2rem;
 }
 
 .card__badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-bottom: 1rem;
 }
 
 .badge {
-  background: rgba(225, 29, 72, 0.12);
-  border: 1px solid rgba(225, 29, 72, 0.25);
-  color: #fb7185;
-  font-size: 0.78rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.25rem 0.65rem;
-  border-radius: 50px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
 }
 
 .card__bio {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -298,31 +295,28 @@ body {
 }
 
 .card__footer {
-  padding-top: 1rem;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--border-color);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 .card__link {
-  color: #fb7185;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
+  font-size: 0.88rem;
+  transition: opacity 0.2s ease;
 }
 
 .card__link:hover {
-  color: #ffffff;
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
-  }
-  .about__container {
-    padding: 1.5rem;
   }
 }
