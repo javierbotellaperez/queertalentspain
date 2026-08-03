@@ -24,8 +24,21 @@
       <span class="navbar__brand">Queer Talent Spain</span>
       
       <div class="navbar__actions-group">
-        <!-- Selector de Idioma (Google Translate) -->
-        <div id="google_translate_element"></div>
+        <!-- BOTONES DE IDIOMA EDITORIAL -->
+        <div class="lang-switch">
+          <button type="button" class="lang-btn active" onclick="changeLanguage('es', this)">ES</button>
+          <span class="lang-separator">/</span>
+          <button type="button" class="lang-btn" onclick="changeLanguage('ca', this)">CAT</button>
+          <span class="lang-separator">/</span>
+          <button type="button" class="lang-btn" onclick="changeLanguage('gl', this)">GAL</button>
+          <span class="lang-separator">/</span>
+          <button type="button" class="lang-btn" onclick="changeLanguage('eu', this)">EUS</button>
+          <span class="lang-separator">/</span>
+          <button type="button" class="lang-btn" onclick="changeLanguage('en', this)">ENG</button>
+        </div>
+
+        <!-- Contenedor oculto de Google Translate -->
+        <div id="google_translate_element" style="display:none;"></div>
 
         <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
           Sumarme
@@ -185,15 +198,34 @@
     </div>
   </footer>
 
-  <!-- Script de Google Translate -->
+  <!-- Script de Google Translate en segundo plano -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'es',
         includedLanguages: 'es,ca,gl,eu,en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false
       }, 'google_translate_element');
+    }
+
+    // Función para activar el idioma mediante las cookies de Google Translate
+    function changeLanguage(langCode, btnElement) {
+      // Marcar botón activo
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      if (langCode === 'es') {
+        // Volver al idioma original eliminando la cookie de traducción
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=." + document.domain + "; path=/;";
+      } else {
+        // Establecer la cookie de idioma para Google Translate
+        document.cookie = "googtrans=/es/" + langCode + "; path=/;";
+        document.cookie = "googtrans=/es/" + langCode + "; domain=." + document.domain + "; path=/;";
+      }
+      
+      // Recargar la página para aplicar la traducción limpia
+      location.reload();
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
