@@ -51,16 +51,21 @@ function renderProfiles(profiles) {
       ? profile.puestos.map(p => `<span class="badge">${p}</span>`).join('')
       : `<span class="badge">${profile.sector}</span>`;
 
-    // Si tiene disponibilidad en remoto, añadir badge especial
+    // Badge de disponibilidad en remoto
     if (profile.disponibleRemoto) {
       puestosBadges += `<span class="badge badge--remote">💻 Remoto</span>`;
     }
+
+    // Formatear pronombres si existen en la respuesta
+    const pronombresHTML = profile.pronombres && profile.pronombres.trim() !== '' 
+      ? `<span class="card__pronouns">(${profile.pronombres})</span>` 
+      : '';
 
     card.innerHTML = `
       <div class="card__header">
         <img class="card__avatar" src="${profile.fotoUrl}" alt="${profile.nombreArtistico}">
         <div class="card__info">
-          <h3>${profile.nombreArtistico}</h3>
+          <h3>${profile.nombreArtistico} ${pronombresHTML}</h3>
           <span class="card__location">📍 ${profile.comunidadAutonoma}</span>
         </div>
       </div>
@@ -77,7 +82,7 @@ function renderProfiles(profiles) {
 }
 
 /**
- * Aplica los filtros en tiempo real
+ * Aplica los filtros en tiempo real (tolerante a tildes)
  */
 function filterProfiles() {
   const rawSearchText = document.getElementById('search-input').value;
@@ -88,7 +93,7 @@ function filterProfiles() {
   const isRemoteOnly = document.getElementById('remote-filter').checked;
 
   const filtered = profilesData.filter(p => {
-    // Normalización para búsqueda tolerante a tildes
+    // Normalización para búsqueda insensible a tildes y mayúsculas
     const nameClean = removeAccents(p.nombreArtistico);
     const bioClean = removeAccents(p.bio);
     const rolesClean = p.puestos ? p.puestos.map(r => removeAccents(r)) : [];
@@ -114,5 +119,5 @@ document.getElementById('role-filter').addEventListener('change', filterProfiles
 document.getElementById('ccaa-filter').addEventListener('change', filterProfiles);
 document.getElementById('remote-filter').addEventListener('change', filterProfiles);
 
-// Inicializar la carga al cargar el DOM
+// Inicializar la aplicación al cargar el DOM
 document.addEventListener('DOMContentLoaded', loadProfiles);
