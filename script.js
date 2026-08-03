@@ -1,21 +1,44 @@
+// ==========================================================================
+// QUEER TALENT SPAIN — LÓGICA DE NAVEGACIÓN Y FILTRADO
+// ==========================================================================
+
 let profilesData = [];
 
+/**
+ * Normaliza cadenas de texto eliminando tildes y diacríticos
+ * Ejemplo: "Dirección" -> "direccion"
+ */
+function removeAccents(str) {
+  if (!str) return "";
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+/**
+ * Carga los datos desde el archivo profiles.json
+ */
 async function loadProfiles() {
   try {
     const res = await fetch('./profiles.json');
     profilesData = await res.json();
     renderProfiles(profilesData);
   } catch (error) {
-    console.error("Error cargando perfiles:", error);
+    console.error("Error al cargar los perfiles:", error);
   }
 }
 
+/**
+ * Renderiza las tarjetas de perfil en el contenedor del DOM
+ */
 function renderProfiles(profiles) {
   const container = document.getElementById('grid-profiles');
   container.innerHTML = '';
 
   if (profiles.length === 0) {
-    container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem 1rem;">No se encontraron perfiles que coincidan con los criterios de búsqueda.</p>';
+    container.innerHTML = `
+      <p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem 1rem; font-weight: 600;">
+        No se encontraron perfiles que coincidan con los criterios de búsqueda.
+      </p>
+    `;
     return;
   }
 
@@ -23,11 +46,12 @@ function renderProfiles(profiles) {
     const card = document.createElement('article');
     card.className = 'card';
     
-    // Generar badges de puestos
+    // Generar badges de puestos / roles
     let puestosBadges = profile.puestos
       ? profile.puestos.map(p => `<span class="badge">${p}</span>`).join('')
       : `<span class="badge">${profile.sector}</span>`;
 
+    // Si tiene disponibilidad en remoto, añadir badge especial
     if (profile.disponibleRemoto) {
       puestosBadges += `<span class="badge badge--remote">💻 Remoto</span>`;
     }
@@ -45,44 +69,50 @@ function renderProfiles(profiles) {
       </div>
       <p class="card__bio">${profile.bio}</p>
       <div class="card__footer">
-        <a href="${profile.portfolioUrl}" target="_blank" rel="noopener" class="card__link">Ver Portfolio →</a>
+        <a href="${profile.portfolioUrl}" target="_blank" rel="noopener noreferrer" class="card__link">Ver Portfolio →</a>
       </div>
     `;
     container.appendChild(card);
   });
 }
 
+/**
+ * Aplica los filtros en tiempo real
+ */
 function filterProfiles() {
-  const text = document.getElementById('search-input').value.toLowerCase();
-  const sector = document.getElementById('sector-filter').value;
+  const rawSearchText = document.getElementById('search-input').value;
+  const text = removeAccents(rawSearchText);
+  
   const role = document.getElementById('role-filter').value;
   const ccaa = document.getElementById('ccaa-filter').value;
-  const remoteOnly = document.getElementById('remote-filter').value;
+  const isRemoteOnly = document.getElementById('remote-filter').checked;
 
   const filtered = profilesData.filter(p => {
-    const matchesText = p.nombreArtistico.toLowerCase().includes(text) || 
-                        p.bio.toLowerCase().includes(text) ||
-                        (p.puestos && p.puestos.some(r => r.toLowerCase().includes(text)));
-    
-    const matchesSector = sector === '' || p.sector === sector;
-    
-    // Filtrado por profesión específica / subcategoría
-    const matchesRole = role === '' || (p.puestos && p.puestos.includes(role));
-    
-    const matchesCCAA = ccaa === '' || p.comunidadAutonoma === ccaa;
-    const matchesRemote = remoteOnly === '' || (remoteOnly === 'true' && p.disponibleRemoto === true);
+    // Normalización para búsqueda tolerante a tildes
+    const nameClean = removeAccents(p.nombreArtistico);
+    const bioClean = removeAccents(p.bio);
+    const rolesClean = p.puestos ? p.puestos.map(r => removeAccents(r)) : [];
 
-    return matchesText && matchesSector && matchesRole && matchesCCAA && matchesRemote;
+    const matchesText = text === '' || 
+                        nameClean.includes(text) || 
+                        bioClean.includes(text) ||
+                        rolesClean.some(r => r.includes(text));
+    
+    const matchesRole = role === '' || (p.puestos && p.puestos.includes(role));
+    const matchesCCAA = ccaa === '' || p.comunidadAutonoma === ccaa;
+    const matchesRemote = !isRemoteOnly || p.disponibleRemoto === true;
+
+    return matchesText && matchesRole && matchesCCAA && matchesRemote;
   });
 
   renderProfiles(filtered);
 }
 
-// Escuchadores de eventos
+// Escuchadores de eventos para filtrado automático
 document.getElementById('search-input').addEventListener('input', filterProfiles);
-document.getElementById('sector-filter').addEventListener('change', filterProfiles);
 document.getElementById('role-filter').addEventListener('change', filterProfiles);
 document.getElementById('ccaa-filter').addEventListener('change', filterProfiles);
 document.getElementById('remote-filter').addEventListener('change', filterProfiles);
 
+// Inicializar la carga al cargar el DOM
 document.addEventListener('DOMContentLoaded', loadProfiles);
