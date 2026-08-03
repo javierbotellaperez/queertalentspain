@@ -1,38 +1,39 @@
-<!-- Hero Section en index.html -->
-<header class="hero">
-  <div class="hero__container">
-    <h1 class="hero__title">Directorio Profesional Queer Talent Spain</h1>
-    <p class="hero__subtitle">
-      Visibilidad, red y comunidad para profesionales LGBTQ+ del sector audiovisual, musical y artes escénicas en España y Catalunya.
-    </p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queer Talent Spain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <!-- Botones de Acción (CTAs) -->
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Queer Talent Spain</h1>
+    <p>Directorio profesional público de visibilidad LGBTQ+.</p>
     <div class="hero__actions">
-      <!-- Botón 1: Redirige al Google Form público en una pestaña nueva -->
-      <a 
-        href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="btn btn--primary"
-      >
-        Sumarme al directorio
-      </a>
-
-      <!-- Botón 2: Hace scroll directo al buscador dentro de la misma página -->
-      <a href="#directorio" class="btn btn--secondary">
-        Buscar profesionales
-      </a>
+      <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" class="btn btn--primary">Sumarme al directorio</a>
+      <a href="#directorio" class="btn btn--secondary">Buscar profesionales</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- Sección del Directorio y Buscador -->
-<main id="directorio" class="directory">
-  <div class="directory__filters">
-    <!-- Aquí van tu buscador por texto y selectores de CCAA / Categorías -->
-  </div>
+  <!-- Buscador y Filtros -->
+  <section id="directorio" class="directory">
+    <div class="filters">
+      <input type="text" id="search-input" placeholder="Buscar por nombre, disciplina...">
+      <select id="ccaa-filter">
+        <option value="">Todas las CCAA</option>
+        <option value="Catalunya">Catalunya</option>
+        <option value="Madrid">Madrid</option>
+        <!-- Resto de CCAA -->
+      </select>
+    </div>
 
-  <div id="profiles-grid" class="directory__grid">
-    <!-- Renderizado dinámico desde JS -->
-  </div>
-</main>
+    <!-- Grid de tarjetas -->
+    <div id="grid-profiles" class="grid"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
