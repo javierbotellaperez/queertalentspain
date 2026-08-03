@@ -1,20 +1,22 @@
 /* ==========================================================================
-   QUEER TALENT SPAIN — ESTILO EDITORIAL & CREATIVO
+   QUEER TALENT SPAIN — ESTILO EDITORIAL, BOLD & SOBRIO
    ========================================================================== */
 
 /* --- IMPORTACIÓN DE TIPOGRAFÍAS --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
 
 /* --- VARIABLES Y PALETA DE COLOR --- */
 :root {
-  --bg-main: #faf9f6;         /* Blanco roto / Off-white editorial */
+  --bg-main: #faf9f6;         /* Blanco roto / Off-white */
   --bg-card: #ffffff;
   --text-main: #0d0d0d;       /* Negro profundo */
-  --text-muted: #555555;      /* Gris medio de alto contraste */
-  --accent-pink: #ff2a5f;     /* Magenta neón vibrante */
+  --text-muted: #555555;      /* Gris de alto contraste */
+  --accent-pink: #ff2a5f;     /* Magenta neón */
   --border-subtle: #e5e5e0;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Tipografías sobrias y rotundas */
+  --font-heading: 'Syne', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* --- RESET & BASE --- */
@@ -55,11 +57,12 @@ body {
 }
 
 .navbar__brand {
-  font-family: var(--font-serif);
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  color: var(--text-main);
 }
 
 /* --- HERO SECTION --- */
@@ -83,16 +86,17 @@ body {
 }
 
 .hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4.2rem);
-  font-weight: 800;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 900;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
 
 .hero h1 i {
-  font-weight: 400;
+  font-style: normal;
   color: var(--accent-pink);
 }
 
@@ -167,8 +171,11 @@ body {
 }
 
 .about__box h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   margin-bottom: 1rem;
 }
 
@@ -187,8 +194,11 @@ body {
 }
 
 .directory__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: 2.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   margin-bottom: 0.5rem;
 }
 
@@ -233,7 +243,7 @@ body {
   border-color: var(--accent-pink);
 }
 
-/* --- CHECKBOX PERSONALIZADO (DISPONIBLE EN REMOTO) --- */
+/* --- CHECKBOX PERSONALIZADO --- */
 .filter-group--checkbox {
   display: flex;
   align-items: center;
@@ -339,19 +349,22 @@ body {
 }
 
 .card__info h3 {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
   font-weight: 800;
-  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
 }
 
-/* Etiqueta de pronombres al lado del nombre */
+/* Pronombres al lado del nombre */
 .card__pronouns {
   font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent-pink);
   margin-left: 0.35rem;
+  text-transform: lowercase;
   white-space: nowrap;
   vertical-align: middle;
 }
