@@ -201,6 +201,7 @@ body {
   background: #ffffff;
   border: 2px solid var(--text-main);
   box-shadow: 4px 4px 0px var(--text-main);
+  align-items: center;
 }
 
 .filter-group {
@@ -213,7 +214,7 @@ body {
   min-width: 260px;
 }
 
-.filters input,
+.filters input[type="text"],
 .filters select {
   width: 100%;
   padding: 0.85rem 1rem;
@@ -226,10 +227,79 @@ body {
   outline: none;
 }
 
-.filters input:focus,
+.filters input[type="text"]:focus,
 .filters select:focus {
   background-color: #ffffff;
   border-color: var(--accent-pink);
+}
+
+/* --- CHECKBOX PERSONALIZADO (DISPONIBLE EN REMOTO) --- */
+.filter-group--checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 200px;
+}
+
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-left: 2.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  user-select: none;
+  height: 100%;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 24px;
+  background-color: var(--bg-main);
+  border: 2px solid var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #f0efe8;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--accent-pink);
+  border-color: var(--text-main);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* --- GRID Y TARJETAS CREATIVAS --- */
