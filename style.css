@@ -1,18 +1,23 @@
-/* Importar tipografía Serif elegante (Playfair Display) + Sans geométrica (Plus Jakarta Sans) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/* ==========================================================================
+   QUEER TALENT SPAIN — ESTILO EDITORIAL & CREATIVO
+   ========================================================================== */
 
+/* --- IMPORTACIÓN DE TIPOGRAFÍAS --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --- VARIABLES Y PALETA DE COLOR --- */
 :root {
   --bg-main: #faf9f6;         /* Blanco roto / Off-white editorial */
   --bg-card: #ffffff;
   --text-main: #0d0d0d;       /* Negro profundo */
   --text-muted: #555555;      /* Gris medio de alto contraste */
   --accent-pink: #ff2a5f;     /* Magenta neón vibrante */
-  --accent-yellow: #ffb800;   /* Amarillo acento */
   --border-subtle: #e5e5e0;
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
+/* --- RESET & BASE --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -31,7 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- NAVBAR --- */
+/* --- BARRA DE NAVEGACIÓN --- */
 .navbar {
   border-bottom: 2px solid var(--text-main);
   padding: 1.25rem 2rem;
@@ -57,7 +62,7 @@ body {
   text-transform: uppercase;
 }
 
-/* --- HERO EDITORIAL --- */
+/* --- HERO SECTION --- */
 .hero {
   padding: 6rem 1.5rem 4rem;
   max-width: 1000px;
@@ -72,7 +77,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   background: var(--text-main);
-  color: #fff;
+  color: #ffffff;
   padding: 0.3rem 0.8rem;
   margin-bottom: 1.5rem;
 }
@@ -106,7 +111,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* --- BOTONES DE DISEÑO AUDIOVISUAL --- */
+/* --- BOTONES DE DISEÑO EDITORIAL --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -155,7 +160,7 @@ body {
 
 .about__box {
   border: 2px solid var(--text-main);
-  background: #fff;
+  background: #ffffff;
   padding: 3rem 2rem;
   box-shadow: 6px 6px 0px var(--text-main);
   text-align: center;
@@ -193,19 +198,19 @@ body {
   flex-wrap: wrap;
   margin: 2rem 0 3rem;
   padding: 1.5rem;
-  background: #fff;
+  background: #ffffff;
   border: 2px solid var(--text-main);
   box-shadow: 4px 4px 0px var(--text-main);
 }
 
 .filter-group {
   flex: 1;
-  min-width: 220px;
+  min-width: 200px;
 }
 
 .filter-group--search {
   flex: 2;
-  min-width: 280px;
+  min-width: 260px;
 }
 
 .filters input,
@@ -223,7 +228,7 @@ body {
 
 .filters input:focus,
 .filters select:focus {
-  background-color: #fff;
+  background-color: #ffffff;
   border-color: var(--accent-pink);
 }
 
@@ -297,6 +302,12 @@ body {
   padding: 0.25rem 0.6rem;
 }
 
+.badge--remote {
+  background: var(--text-main);
+  color: #ffffff;
+  border-color: var(--text-main);
+}
+
 .card__bio {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -309,7 +320,7 @@ body {
   padding-top: 1rem;
   border-top: 2px solid var(--border-subtle);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -322,18 +333,19 @@ body {
   letter-spacing: 0.05em;
   border-bottom: 2px solid var(--accent-pink);
   padding-bottom: 2px;
+  transition: all 0.2s ease;
 }
 
 .card__link:hover {
   background: var(--accent-pink);
-  color: #fff;
+  color: #ffffff;
 }
 
 /* --- FOOTER & LEGALES --- */
 .footer {
   margin-top: 6rem;
   border-top: 2px solid var(--text-main);
-  background: #fff;
+  background: #ffffff;
   padding: 3rem 1.5rem;
   text-align: center;
 }
@@ -351,6 +363,7 @@ body {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer__links a {
@@ -364,4 +377,17 @@ body {
 .footer__copy {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1rem 3rem;
+  }
+  .about__box {
+    padding: 2rem 1.25rem;
+  }
+  .filters {
+    padding: 1rem;
+  }
 }
