@@ -15,7 +15,7 @@ function renderProfiles(profiles) {
   container.innerHTML = '';
 
   if (profiles.length === 0) {
-    container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No se encontraron perfiles que coincidan con la búsqueda.</p>';
+    container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">No se encontraron perfiles que coincidan con la búsqueda.</p>';
     return;
   }
 
@@ -23,10 +23,15 @@ function renderProfiles(profiles) {
     const card = document.createElement('article');
     card.className = 'card';
     
-    // Convertir los puestos en etiquetas (badges)
-    const puestosBadges = profile.puestos
+    // Generar badges de puestos
+    let puestosBadges = profile.puestos
       ? profile.puestos.map(p => `<span class="badge">${p}</span>`).join('')
       : `<span class="badge">${profile.sector}</span>`;
+
+    // Si ha marcado "Sí" a remoto, añadimos la etiqueta especial de remoto
+    if (profile.disponibleRemoto) {
+      puestosBadges += `<span class="badge badge--remote">💻 Remoto</span>`;
+    }
 
     card.innerHTML = `
       <div class="card__header">
@@ -52,6 +57,7 @@ function filterProfiles() {
   const text = document.getElementById('search-input').value.toLowerCase();
   const sector = document.getElementById('sector-filter').value;
   const ccaa = document.getElementById('ccaa-filter').value;
+  const remoteOnly = document.getElementById('remote-filter').value;
 
   const filtered = profilesData.filter(p => {
     const matchesText = p.nombreArtistico.toLowerCase().includes(text) || 
@@ -60,15 +66,20 @@ function filterProfiles() {
     
     const matchesSector = sector === '' || p.sector === sector;
     const matchesCCAA = ccaa === '' || p.comunidadAutonoma === ccaa;
+    
+    // Lógica del filtro de remoto
+    const matchesRemote = remoteOnly === '' || (remoteOnly === 'true' && p.disponibleRemoto === true);
 
-    return matchesText && matchesSector && matchesCCAA;
+    return matchesText && matchesSector && matchesCCAA && matchesRemote;
   });
 
   renderProfiles(filtered);
 }
 
+// Escuchadores de eventos
 document.getElementById('search-input').addEventListener('input', filterProfiles);
 document.getElementById('sector-filter').addEventListener('change', filterProfiles);
 document.getElementById('ccaa-filter').addEventListener('change', filterProfiles);
+document.getElementById('remote-filter').addEventListener('change', filterProfiles);
 
 document.addEventListener('DOMContentLoaded', loadProfiles);
