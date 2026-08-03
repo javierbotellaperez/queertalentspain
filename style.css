@@ -345,6 +345,17 @@ body {
   line-height: 1.2;
 }
 
+/* Etiqueta de pronombres al lado del nombre */
+.card__pronouns {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-pink);
+  margin-left: 0.35rem;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
 .card__location {
   font-size: 0.85rem;
   font-weight: 700;
