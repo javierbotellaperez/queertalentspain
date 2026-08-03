@@ -38,15 +38,11 @@ body {
   top: 0px !important;
 }
 
-/* OCULTAR BANNERS SUPERIORES DE GOOGLE TRANSLATE */
+/* OCULTAR BANNERS SUPERIORES Y ELEMENTOS VISUALES DE GOOGLE TRANSLATE */
 .goog-te-banner-frame, 
 .skiptranslate, 
 #goog-gt-tt {
   display: none !important;
-}
-
-body {
-  top: 0px !important;
 }
 
 /* --- BARRA DE NAVEGACIÓN --- */
