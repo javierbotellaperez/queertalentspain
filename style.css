@@ -35,7 +35,18 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  top: 0px !important; /* Mantiene la posición del header limpia con Translate */
+  top: 0px !important;
+}
+
+/* OCULTAR BANNERS SUPERIORES DE GOOGLE TRANSLATE */
+.goog-te-banner-frame, 
+.skiptranslate, 
+#goog-gt-tt {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
 }
 
 /* --- BARRA DE NAVEGACIÓN --- */
@@ -68,43 +79,42 @@ body {
 .navbar__actions-group {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-/* --- ESTILO PARA GOOGLE TRANSLATE --- */
-#google_translate_element {
-  display: inline-block;
+/* --- SELECTOR DE IDIOMA EN TEXTO PLANO --- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
-.goog-te-gadget {
-  font-family: var(--font-sans) !important;
-  font-size: 0.8rem !important;
-  color: var(--text-main) !important;
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.1rem 0.2rem;
+  transition: color 0.2s ease;
 }
 
-.goog-te-gadget-simple {
-  background-color: var(--bg-main) !important;
-  border: 2px solid var(--text-main) !important;
-  padding: 0.35rem 0.6rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  cursor: pointer !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  box-shadow: 2px 2px 0px var(--text-main);
+.lang-btn:hover {
+  color: var(--text-main);
 }
 
-.goog-te-gadget-simple img {
-  display: none !important;
+.lang-btn.active {
+  color: var(--accent-pink);
+  border-bottom: 2px solid var(--accent-pink);
 }
 
-.goog-te-banner-frame {
-  display: none !important;
-}
-
-.skiptranslate {
-  font-family: var(--font-sans) !important;
+.lang-separator {
+  color: var(--border-subtle);
+  font-weight: 400;
 }
 
 /* --- HERO SECTION --- */
@@ -399,7 +409,6 @@ body {
   line-height: 1.15;
 }
 
-/* Pronombres al lado del nombre */
 .card__pronouns {
   font-family: var(--font-sans);
   font-size: 0.8rem;
@@ -547,5 +556,8 @@ body {
   }
   .filters {
     padding: 1rem;
+  }
+  .navbar__actions-group {
+    gap: 0.8rem;
   }
 }
