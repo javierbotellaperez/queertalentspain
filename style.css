@@ -35,6 +35,7 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  top: 0px !important; /* Mantiene la posición del header limpia con Translate */
 }
 
 /* --- BARRA DE NAVEGACIÓN --- */
@@ -62,6 +63,48 @@ body {
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--text-main);
+}
+
+.navbar__actions-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- ESTILO PARA GOOGLE TRANSLATE --- */
+#google_translate_element {
+  display: inline-block;
+}
+
+.goog-te-gadget {
+  font-family: var(--font-sans) !important;
+  font-size: 0.8rem !important;
+  color: var(--text-main) !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: var(--bg-main) !important;
+  border: 2px solid var(--text-main) !important;
+  padding: 0.35rem 0.6rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  box-shadow: 2px 2px 0px var(--text-main);
+}
+
+.goog-te-gadget-simple img {
+  display: none !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.skiptranslate {
+  font-family: var(--font-sans) !important;
 }
 
 /* --- HERO SECTION --- */
