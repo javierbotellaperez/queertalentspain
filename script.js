@@ -27,7 +27,7 @@ async function loadProfiles() {
 }
 
 /**
- * Renderiza las tarjetas de perfil en el contenedor del DOM
+ * Renderiza las tarjetas de perfil en el DOM
  */
 function renderProfiles(profiles) {
   const container = document.getElementById('grid-profiles');
@@ -56,10 +56,21 @@ function renderProfiles(profiles) {
       puestosBadges += `<span class="badge badge--remote">💻 Remoto</span>`;
     }
 
-    // Formatear pronombres si existen en la respuesta
+    // Formatear pronombres si existen
     const pronombresHTML = profile.pronombres && profile.pronombres.trim() !== '' 
       ? `<span class="card__pronouns">(${profile.pronombres})</span>` 
       : '';
+
+    // Generar enlace de Instagram si está disponible
+    let instagramHTML = '';
+    if (profile.redes && profile.redes.instagram && profile.redes.instagram.trim() !== '' && profile.redes.instagram !== '_') {
+      const handleClean = profile.redes.instagram.replace('@', '').trim();
+      instagramHTML = `
+        <a href="https://instagram.com/${handleClean}" target="_blank" rel="noopener noreferrer" class="card__social-link" title="Instagram de ${profile.nombreArtistico}">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      `;
+    }
 
     card.innerHTML = `
       <div class="card__header">
@@ -74,6 +85,9 @@ function renderProfiles(profiles) {
       </div>
       <p class="card__bio">${profile.bio}</p>
       <div class="card__footer">
+        <div class="card__socials">
+          ${instagramHTML}
+        </div>
         <a href="${profile.portfolioUrl}" target="_blank" rel="noopener noreferrer" class="card__link">Ver Portfolio →</a>
       </div>
     `;
@@ -82,7 +96,7 @@ function renderProfiles(profiles) {
 }
 
 /**
- * Aplica los filtros en tiempo real (tolerante a tildes)
+ * Aplica los filtros en tiempo real (insensible a tildes)
  */
 function filterProfiles() {
   const rawSearchText = document.getElementById('search-input').value;
@@ -113,11 +127,11 @@ function filterProfiles() {
   renderProfiles(filtered);
 }
 
-// Escuchadores de eventos para filtrado automático
+// Escuchadores de eventos
 document.getElementById('search-input').addEventListener('input', filterProfiles);
 document.getElementById('role-filter').addEventListener('change', filterProfiles);
 document.getElementById('ccaa-filter').addEventListener('change', filterProfiles);
 document.getElementById('remote-filter').addEventListener('change', filterProfiles);
 
-// Inicializar la aplicación al cargar el DOM
+// Inicializar la aplicación
 document.addEventListener('DOMContentLoaded', loadProfiles);
