@@ -3,36 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Queer Talent Spain</title>
+  <title>Queer Talent Spain — Directorio Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <header class="hero">
+    <div class="hero__badge">Comunidad & Visibilidad</div>
     <h1>Queer Talent Spain</h1>
-    <p>Directorio profesional público de visibilidad LGBTQ+.</p>
+    <p class="hero__subtitle">
+      Directorio profesional de artes escénicas, audiovisual y música destinado a impulsar la representación queer en la industria cultural.
+    </p>
     <div class="hero__actions">
-      <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" class="btn btn--primary">Sumarme al directorio</a>
-      <a href="#directorio" class="btn btn--secondary">Buscar profesionales</a>
+      <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+        Sumarme al directorio
+      </a>
+      <a href="#directorio" class="btn btn--secondary">
+        Buscar profesionales
+      </a>
     </div>
   </header>
 
-  <!-- Buscador y Filtros -->
-  <section id="directorio" class="directory">
-    <div class="filters">
-      <input type="text" id="search-input" placeholder="Buscar por nombre, disciplina...">
-      <select id="ccaa-filter">
-        <option value="">Todas las CCAA</option>
-        <option value="Catalunya">Catalunya</option>
-        <option value="Madrid">Madrid</option>
-        <!-- Resto de CCAA -->
-      </select>
+  <!-- SECCIÓN: QUÉ ES QUEER TALENT SPAIN -->
+  <section class="about">
+    <div class="about__container">
+      <h2>Reforzando la representación en la cultura</h2>
+      <p>
+        <strong>Queer Talent Spain</strong> es un espacio de encuentro y catálogo público diseñado para mapear, conectar y dar visibilidad al talento LGBTQ+ en España y Catalunya. A través de diferentes disciplinas culturales —desde el cine y la música hasta la danza y la técnica— construimos una red sólida para tejer alianzas, facilitar contrataciones éticas y combatir la infrarrepresentación en la industria.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: DIRECTORIO Y FILTROS -->
+  <main id="directorio" class="directory">
+    <div class="directory__header">
+      <h2>Directorio Profesional</h2>
+      <p>Encuentra perfiles técnicos y artísticos para tus próximos proyectos.</p>
     </div>
 
-    <!-- Grid de tarjetas -->
+    <div class="filters">
+      <div class="filter-group filter-group--search">
+        <input type="text" id="search-input" placeholder="Buscar por nombre, disciplina, bio...">
+      </div>
+      <div class="filter-group">
+        <select id="sector-filter">
+          <option value="">Todos los sectores</option>
+          <option value="Cine, TV y Audiovisual">Cine, TV y Audiovisual</option>
+          <option value="Música y Producción Sonora">Música y Producción Sonora</option>
+          <option value="Danza y Artes Escénicas">Danza y Artes Escénicas</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <select id="ccaa-filter">
+          <option value="">Todas las CCAA</option>
+          <option value="Catalunya">Catalunya</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Comunitat Valenciana">Comunitat Valenciana</option>
+          <option value="Andalucía">Andalucía</option>
+          <!-- Se pueden añadir el resto -->
+        </select>
+      </div>
+    </div>
+
+    <!-- GRID DE TARJETAS -->
     <div id="grid-profiles" class="grid"></div>
-  </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
