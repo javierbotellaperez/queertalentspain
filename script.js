@@ -6,7 +6,6 @@ let profilesData = [];
 
 /**
  * Normaliza cadenas de texto eliminando tildes y diacríticos
- * Ejemplo: "Dirección" -> "direccion"
  */
 function removeAccents(str) {
   if (!str) return "";
@@ -61,12 +60,12 @@ function renderProfiles(profiles) {
       ? `<span class="card__pronouns">(${profile.pronombres})</span>` 
       : '';
 
-    // Generar enlace de Instagram si está disponible
+    // Enlace de Instagram protegido con notranslate
     let instagramHTML = '';
     if (profile.redes && profile.redes.instagram && profile.redes.instagram.trim() !== '' && profile.redes.instagram !== '_') {
       const handleClean = profile.redes.instagram.replace('@', '').trim();
       instagramHTML = `
-        <a href="https://instagram.com/${handleClean}" target="_blank" rel="noopener noreferrer" class="card__social-link" title="Instagram de ${profile.nombreArtistico}">
+        <a href="https://instagram.com/${handleClean}" target="_blank" rel="noopener noreferrer" class="card__social-link notranslate" translate="no" title="Instagram de ${profile.nombreArtistico}">
           <i class="fa-brands fa-instagram"></i>
         </a>
       `;
@@ -76,7 +75,8 @@ function renderProfiles(profiles) {
       <div class="card__header">
         <img class="card__avatar" src="${profile.fotoUrl}" alt="${profile.nombreArtistico}">
         <div class="card__info">
-          <h3>${profile.nombreArtistico} ${pronombresHTML}</h3>
+          <!-- notranslate e attribute translate="no" para no traducir nombres propios -->
+          <h3 class="notranslate" translate="no">${profile.nombreArtistico} ${pronombresHTML}</h3>
           <span class="card__location">📍 ${profile.comunidadAutonoma}</span>
         </div>
       </div>
@@ -107,7 +107,6 @@ function filterProfiles() {
   const isRemoteOnly = document.getElementById('remote-filter').checked;
 
   const filtered = profilesData.filter(p => {
-    // Normalización para búsqueda insensible a tildes y mayúsculas
     const nameClean = removeAccents(p.nombreArtistico);
     const bioClean = removeAccents(p.bio);
     const rolesClean = p.puestos ? p.puestos.map(r => removeAccents(r)) : [];
