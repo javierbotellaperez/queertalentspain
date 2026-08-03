@@ -1,66 +1,38 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Queer Talent Spain — Directorio de Creatividad LGBTQ+</title>
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-</head>
-<body>
+<!-- Hero Section en index.html -->
+<header class="hero">
+  <div class="hero__container">
+    <h1 class="hero__title">Directorio Profesional Queer Talent Spain</h1>
+    <p class="hero__subtitle">
+      Visibilidad, red y comunidad para profesionales LGBTQ+ del sector audiovisual, musical y artes escénicas en España y Catalunya.
+    </p>
 
-  <header class="site-header">
-    <div class="logo">Queer Talent Spain</div>
-    <nav>
-      <a href="#directorio">Directorio</a>
-      <a href="#sumate" class="btn-primary">Súmate al directorio</a>
-    </nav>
-  </header>
+    <!-- Botones de Acción (CTAs) -->
+    <div class="hero__actions">
+      <!-- Botón 1: Redirige al Google Form público en una pestaña nueva -->
+      <a 
+        href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn--primary"
+      >
+        Sumarme al directorio
+      </a>
 
-  <main>
-    <!-- Buscador y Filtros -->
-    <section class="filters-section">
-      <input type="text" id="search-input" placeholder="Buscar por nombre, software, bio...">
-      
-      <select id="filter-category">
-        <option value="">Todas las categorías</option>
-        <option value="Dirección / Realización">Dirección / Realización</option>
-        <option value="Fotografía / Cámara">Fotografía / Cámara</option>
-        <option value="Postproducción / Montaje / Color / VFX">Postproducción / Montaje / Color / VFX</option>
-        <option value="Música y Sonido">Música y Sonido</option>
-        <option value="Artistas / Cantantes / Proyectos musicales">Artistas / Cantantes / Proyectos musicales</option>
-        <option value="Producción / Casting / Localizaciones">Producción / Casting / Localizaciones</option>
-        <option value="Arte / Estilo / Vestuario / Maquillaje">Arte / Estilo / Vestuario / Maquillaje</option>
-      </select>
-
-      <select id="filter-region">
-        <option value="">Toda España</option>
-        <option value="Catalunya">Catalunya</option>
-        <option value="Madrid">Madrid</option>
-        <option value="Andalucía">Andalucía</option>
-        <option value="Comunitat Valenciana">Comunitat Valenciana</option>
-        <!-- Resto de CCAA -->
-      </select>
-    </section>
-
-    <!-- Grid de Talentos -->
-    <section class="grid-container" id="talents-grid">
-      <!-- Se puebla dinámicamente con JS -->
-    </section>
-  </main>
-
-  <!-- Modal Ficha Completa -->
-  <dialog id="profile-modal" class="modal">
-    <div class="modal-content" id="modal-body">
-      <!-- Se puebla dinámicamente al hacer clic en una tarjeta -->
+      <!-- Botón 2: Hace scroll directo al buscador dentro de la misma página -->
+      <a href="#directorio" class="btn btn--secondary">
+        Buscar profesionales
+      </a>
     </div>
-  </dialog>
+  </div>
+</header>
 
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/api.js"></script>
-  <script src="assets/js/filters.js"></script>
-  <script src="assets/js/render.js"></script>
-  <script src="assets/js/main.js"></script>
-</body>
-</html>
+<!-- Sección del Directorio y Buscador -->
+<main id="directorio" class="directory">
+  <div class="directory__filters">
+    <!-- Aquí van tu buscador por texto y selectores de CCAA / Categorías -->
+  </div>
+
+  <div id="profiles-grid" class="directory__grid">
+    <!-- Renderizado dinámico desde JS -->
+  </div>
+</main>
