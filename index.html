@@ -1,103 +1,183 @@
-<div class="filters">
-  <!-- Búsqueda por texto libre -->
-  <div class="filter-group filter-group--search">
-    <input type="text" id="search-input" placeholder="Buscar por nombre, palabra clave, bio...">
-  </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queer Talent Spain — Directorio Profesional</title>
+  
+  <!-- Tipografías: Playfair Display (Serif) + Plus Jakarta Sans (Sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Archivo CSS en la misma carpeta raíz -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <!-- Filtro por Puesto / Profesión Específica (Subcategorías) -->
-  <div class="filter-group">
-    <select id="role-filter">
-      <option value="">Todas las profesiones</option>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <span class="navbar__brand">Queer Talent Spain</span>
+      <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+        Sumarme
+      </a>
+    </div>
+  </nav>
 
-      <optgroup label="Cine, TV y Audiovisual">
-        <option value="Dirección / Realización">Dirección / Realización</option>
-        <option value="Ayudante de Dirección">Ayudante de Dirección</option>
-        <option value="Guion / Scriptwriter">Guion / Scriptwriter</option>
-        <option value="Script / Continuista">Script / Continuista</option>
-        <option value="Dirección de Producción">Dirección de Producción</option>
-        <option value="Jefatura de Producción">Jefatura de Producción</option>
-        <option value="Auxiliar de Producción">Auxiliar de Producción</option>
-        <option value="Coordinación de Post Producción">Coordinación de Post Producción</option>
-        <option value="Localizaciones (Location Manager / Scout)">Localizaciones (Location Manager / Scout)</option>
-        <option value="Dirección de Fotografía (DoP)">Dirección de Fotografía (DoP)</option>
-        <option value="Operador/a de Cámara">Operador/a de Cámara</option>
-        <option value="Ayudante de Cámara (1st AC) / Auxiliar">Ayudante de Cámara (1st AC)</option>
-        <option value="Gaffer / Jefatura de Eléctricos">Gaffer / Jefatura de Eléctricos</option>
-        <option value="Eléctrico/a">Eléctrico/a</option>
-        <option value="Maquinista (Grip)">Maquinista (Grip)</option>
-        <option value="Dirección de Arte">Dirección de Arte</option>
-        <option value="Diseño de Vestuario">Diseño de Vestuario</option>
-        <option value="Estilismo / Maquillaje y Peluquería de Cine">Maquillaje / Peluquería Cine</option>
-        <option value="Atrezzo / Ambientación">Atrezzo / Ambientación</option>
-        <option value="Sonidista / Técnico/a de Sonido Directo">Sonidista / Sonido Directo</option>
-        <option value="Microfonista">Microfonista</option>
-        <option value="Montaje / Edición">Montaje / Edición</option>
-        <option value="Colorista">Colorista</option>
-        <option value="Diseño de Sonido / Edición de Audio">Diseño de Sonido</option>
-        <option value="VFX / Postproducción Visual">VFX / Postproducción Visual</option>
-      </optgroup>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <span class="hero__tag">Directorio de Visibilidad</span>
+    <h1>Red & Talento <i>Queer</i> en la Industria Cultural</h1>
+    <p class="hero__subtitle">
+      Visibilidad, comunidad y conexiones profesionales para creadores, artistas y equipo técnico LGBTQ+ del sector audiovisual, musical y de las artes escénicas.
+    </p>
+    <div class="hero__actions">
+      <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+        Sumarme al directorio
+      </a>
+      <a href="#directorio" class="btn btn--secondary">
+        Buscar profesionales
+      </a>
+    </div>
+  </header>
 
-      <optgroup label="Música y Producción Sonora">
-        <option value="Cantante / Vocalista">Cantante / Vocalista</option>
-        <option value="Músico/a / Instrumentista">Músico/a / Instrumentista</option>
-        <option value="Composición / Songwriting">Composición / Songwriting</option>
-        <option value="Producción Musical">Producción Musical</option>
-        <option value="DJ / Selector/a">DJ / Selector/a</option>
-        <option value="Ingeniería de Grabación / Mezcla / Masterización">Ingeniería de Grabación / Mezcla</option>
-        <option value="Técnico/a de Sonido Directo (PA / Monitores)">Técnico/a Sonido Directo</option>
-        <option value="Tour Manager / Gestión de Giras">Tour Manager</option>
-      </optgroup>
+  <!-- SECCIÓN: QUÉ ES QUEER TALENT SPAIN -->
+  <section class="about">
+    <div class="about__box">
+      <h2>Reforzando la representación en la cultura</h2>
+      <p>
+        <strong>Queer Talent Spain</strong> es un espacio de encuentro y catálogo público diseñado para mapear, conectar y dar visibilidad al talento LGBTQ+ en España y Catalunya. A través de diferentes disciplinas —desde la dirección de cine y la producción sonora hasta la danza y los equipos técnicos— construimos una red sólida para tejer alianzas, facilitar contrataciones éticas y combatir la infrarrepresentación en la industria.
+      </p>
+    </div>
+  </section>
 
-      <optgroup label="Danza y Artes Escénicas">
-        <option value="Bailarín/a / Performer">Bailarín/a / Performer</option>
-        <option value="Coreografía">Coreografía</option>
-        <option value="Dirección Escénica / Teatral">Dirección Escénica / Teatral</option>
-        <option value="Dramaturgia">Dramaturgia</option>
-        <option value="Intérprete / Actor / Actriz de Teatro">Intérprete / Actor / Actriz</option>
-        <option value="Dirección Técnica de Espacio Escénico">Dirección Técnica Escénica</option>
-      </optgroup>
+  <!-- SECCIÓN PRINCIPAL: DIRECTORIO Y FILTROS -->
+  <main id="directorio" class="directory">
+    <h2 class="directory__title">Catálogo de Talentos</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1rem;">Encuentra perfiles profesionales para tus producciones y proyectos.</p>
 
-      <optgroup label="Otras Áreas Creativas">
-        <option value="Fotografía (Moda, Retrato, Fijo)">Fotografía (Moda, Retrato, Fijo)</option>
-        <option value="Diseño Gráfico / Ilustración">Diseño Gráfico / Ilustración</option>
-        <option value="Maquillaje Y Peluquería / Drag Arts">Maquillaje / Drag Arts</option>
-        <option value="Gestión Cultural / Booking / Comisariado">Gestión Cultural / Booking</option>
-      </optgroup>
-    </select>
-  </div>
+    <div class="filters">
+      <!-- Búsqueda por texto libre -->
+      <div class="filter-group filter-group--search">
+        <input type="text" id="search-input" placeholder="Buscar por nombre, palabra clave, bio...">
+      </div>
 
-  <!-- Filtro por CCAA -->
-  <div class="filter-group">
-    <select id="ccaa-filter">
-      <option value="">Todas las CCAA</option>
-      <option value="Andalucía">Andalucía</option>
-      <option value="Aragón">Aragón</option>
-      <option value="Asturias">Asturias</option>
-      <option value="Baleares">Baleares</option>
-      <option value="Canarias">Canarias</option>
-      <option value="Cantabria">Cantabria</option>
-      <option value="Castilla y León">Castilla y León</option>
-      <option value="Castilla-La Mancha">Castilla-La Mancha</option>
-      <option value="Catalunya">Catalunya</option>
-      <option value="Comunitat Valenciana">Comunitat Valenciana</option>
-      <option value="Extremadura">Extremadura</option>
-      <option value="Galicia">Galicia</option>
-      <option value="La Rioja">La Rioja</option>
-      <option value="Madrid">Madrid</option>
-      <option value="Murcia">Murcia</option>
-      <option value="Navarra">Navarra</option>
-      <option value="País Vasco">País Vasco</option>
-      <option value="Ceuta / Melilla">Ceuta / Melilla</option>
-      <option value="Internacional / Remoto">Internacional / Remoto</option>
-    </select>
-  </div>
+      <!-- Filtro por Puesto / Profesión Específica (Subcategorías) -->
+      <div class="filter-group">
+        <select id="role-filter">
+          <option value="">Todas las profesiones</option>
 
-  <!-- Checkbox para Disponibilidad Remota -->
-  <div class="filter-group filter-group--checkbox">
-    <label class="checkbox-container">
-      <input type="checkbox" id="remote-filter">
-      <span class="checkmark"></span>
-      <span class="checkbox-label">💻 Disponible en remoto</span>
-    </label>
-  </div>
-</div>
+          <optgroup label="Cine, TV y Audiovisual">
+            <option value="Dirección / Realización">Dirección / Realización</option>
+            <option value="Ayudante de Dirección">Ayudante de Dirección</option>
+            <option value="Guion / Scriptwriter">Guion / Scriptwriter</option>
+            <option value="Script / Continuista">Script / Continuista</option>
+            <option value="Dirección de Producción">Dirección de Producción</option>
+            <option value="Jefatura de Producción">Jefatura de Producción</option>
+            <option value="Auxiliar de Producción">Auxiliar de Producción</option>
+            <option value="Coordinación de Post Producción">Coordinación de Post Producción</option>
+            <option value="Localizaciones (Location Manager / Scout)">Localizaciones (Location Manager / Scout)</option>
+            <option value="Dirección de Fotografía (DoP)">Dirección de Fotografía (DoP)</option>
+            <option value="Operador/a de Cámara">Operador/a de Cámara</option>
+            <option value="Ayudante de Cámara (1st AC) / Auxiliar">Ayudante de Cámara (1st AC)</option>
+            <option value="Gaffer / Jefatura de Eléctricos">Gaffer / Jefatura de Eléctricos</option>
+            <option value="Eléctrico/a">Eléctrico/a</option>
+            <option value="Maquinista (Grip)">Maquinista (Grip)</option>
+            <option value="Dirección de Arte">Dirección de Arte</option>
+            <option value="Diseño de Vestuario">Diseño de Vestuario</option>
+            <option value="Estilismo / Maquillaje y Peluquería de Cine">Maquillaje / Peluquería Cine</option>
+            <option value="Atrezzo / Ambientación">Atrezzo / Ambientación</option>
+            <option value="Sonidista / Técnico/a de Sonido Directo">Sonidista / Sonido Directo</option>
+            <option value="Microfonista">Microfonista</option>
+            <option value="Montaje / Edición">Montaje / Edición</option>
+            <option value="Colorista">Colorista</option>
+            <option value="Diseño de Sonido / Edición de Audio">Diseño de Sonido</option>
+            <option value="VFX / Postproducción Visual">VFX / Postproducción Visual</option>
+          </optgroup>
+
+          <optgroup label="Música y Producción Sonora">
+            <option value="Cantante / Vocalista">Cantante / Vocalista</option>
+            <option value="Músico/a / Instrumentista">Músico/a / Instrumentista</option>
+            <option value="Composición / Songwriting">Composición / Songwriting</option>
+            <option value="Producción Musical">Producción Musical</option>
+            <option value="DJ / Selector/a">DJ / Selector/a</option>
+            <option value="Ingeniería de Grabación / Mezcla / Masterización">Ingeniería de Grabación / Mezcla</option>
+            <option value="Técnico/a de Sonido Directo (PA / Monitores)">Técnico/a Sonido Directo</option>
+            <option value="Tour Manager / Gestión de Giras">Tour Manager</option>
+          </optgroup>
+
+          <optgroup label="Danza y Artes Escénicas">
+            <option value="Bailarín/a / Performer">Bailarín/a / Performer</option>
+            <option value="Coreografía">Coreografía</option>
+            <option value="Dirección Escénica / Teatral">Dirección Escénica / Teatral</option>
+            <option value="Dramaturgia">Dramaturgia</option>
+            <option value="Intérprete / Actor / Actriz de Teatro">Intérprete / Actor / Actriz</option>
+            <option value="Dirección Técnica de Espacio Escénico">Dirección Técnica Escénica</option>
+          </optgroup>
+
+          <optgroup label="Otras Áreas Creativas">
+            <option value="Fotografía (Moda, Retrato, Fijo)">Fotografía (Moda, Retrato, Fijo)</option>
+            <option value="Diseño Gráfico / Ilustración">Diseño Gráfico / Ilustración</option>
+            <option value="Maquillaje Y Peluquería / Drag Arts">Maquillaje / Drag Arts</option>
+            <option value="Gestión Cultural / Booking / Comisariado">Gestión Cultural / Booking</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- Filtro por CCAA -->
+      <div class="filter-group">
+        <select id="ccaa-filter">
+          <option value="">Todas las CCAA</option>
+          <option value="Andalucía">Andalucía</option>
+          <option value="Aragón">Aragón</option>
+          <option value="Asturias">Asturias</option>
+          <option value="Baleares">Baleares</option>
+          <option value="Canarias">Canarias</option>
+          <option value="Cantabria">Cantabria</option>
+          <option value="Castilla y León">Castilla y León</option>
+          <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+          <option value="Catalunya">Catalunya</option>
+          <option value="Comunitat Valenciana">Comunitat Valenciana</option>
+          <option value="Extremadura">Extremadura</option>
+          <option value="Galicia">Galicia</option>
+          <option value="La Rioja">La Rioja</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Murcia">Murcia</option>
+          <option value="Navarra">Navarra</option>
+          <option value="País Vasco">País Vasco</option>
+          <option value="Ceuta / Melilla">Ceuta / Melilla</option>
+          <option value="Internacional / Remoto">Internacional / Remoto</option>
+        </select>
+      </div>
+
+      <!-- Checkbox para Disponibilidad Remota -->
+      <div class="filter-group filter-group--checkbox">
+        <label class="checkbox-container">
+          <input type="checkbox" id="remote-filter">
+          <span class="checkmark"></span>
+          <span class="checkbox-label">💻 Disponible en remoto</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR GRID DE TARJETAS -->
+    <div id="grid-profiles" class="grid"></div>
+  </main>
+
+  <!-- PIE DE PÁGINA Y LEGALES -->
+  <footer class="footer">
+    <div class="footer__container">
+      <p class="navbar__brand">Queer Talent Spain</p>
+      <div class="footer__links">
+        <a href="#modal-privacidad" onclick="alert('Tratamiento de Datos Personales (RGPD):\n\nLos datos mostrados en este directorio han sido publicados bajo consentimiento explícito (Art. 9.2.a RGPD).\n\nPara modificar tu perfil o solicitar la eliminación total de tus datos, envía un correo a: hola@queertalentspain.com')">Política de Privacidad & RGPD</a>
+        <a href="https://docs.google.com/forms/d/1wnjXYf3uE_0WzQ4OfojwGoBkfUsjTsNeQ9aq2zfaJ58/viewform" target="_blank" rel="noopener noreferrer">Formulario de Registro</a>
+      </div>
+      <p class="footer__copy">© 2026 Queer Talent Spain. Impulsando la representación en las artes y el audiovisual.</p>
+    </div>
+  </footer>
+
+  <!-- Archivo JS en la misma carpeta raíz -->
+  <script src="script.js"></script>
+</body>
+</html>
