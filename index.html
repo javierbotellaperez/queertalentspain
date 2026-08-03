@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Queer Talent Spain</title>
+  <title>Queer Talent Spain — Directorio Profesional</title>
   
   <!-- Tipografía Helvética / Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,15 +26,15 @@
       <div class="navbar__actions-group">
         <!-- BOTONES DE IDIOMA EN TEXTO PLANO PROTEGIDOS -->
         <div class="lang-switch notranslate" translate="no">
-          <button type="button" class="lang-btn active" onclick="changeLanguage('es', this)">ES</button>
+          <button type="button" class="lang-btn" data-lang="es" onclick="changeLanguage('es', this)">ES</button>
           <span class="lang-separator">/</span>
-          <button type="button" class="lang-btn" onclick="changeLanguage('ca', this)">CAT</button>
+          <button type="button" class="lang-btn" data-lang="ca" onclick="changeLanguage('ca', this)">CAT</button>
           <span class="lang-separator">/</span>
-          <button type="button" class="lang-btn" onclick="changeLanguage('gl', this)">GAL</button>
+          <button type="button" class="lang-btn" data-lang="gl" onclick="changeLanguage('gl', this)">GAL</button>
           <span class="lang-separator">/</span>
-          <button type="button" class="lang-btn" onclick="changeLanguage('eu', this)">EUS</button>
+          <button type="button" class="lang-btn" data-lang="eu" onclick="changeLanguage('eu', this)">EUS</button>
           <span class="lang-separator">/</span>
-          <button type="button" class="lang-btn" onclick="changeLanguage('en', this)">ENG</button>
+          <button type="button" class="lang-btn" data-lang="en" onclick="changeLanguage('en', this)">ENG</button>
         </div>
 
         <!-- Contenedor oculto de Google Translate -->
@@ -169,6 +169,7 @@
           <option value="Navarra">Navarra</option>
           <option value="País Vasco">País Vasco</option>
           <option value="Ceuta / Melilla">Ceuta / Melilla</option>
+          <option value="Internacional / Remoto">Internacional / Remoto</option>
         </select>
       </div>
 
@@ -198,7 +199,7 @@
     </div>
   </footer>
 
-  <!-- Script de Google Translate -->
+  <!-- Script de Google Translate & Persistencia de Botón de Idioma -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -208,10 +209,28 @@
       }, 'google_translate_element');
     }
 
-    function changeLanguage(langCode, btnElement) {
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      btnElement.classList.add('active');
+    // Detectar qué idioma está activo leyendo la cookie de Google Translate al cargar
+    function syncActiveLanguageButton() {
+      const match = document.cookie.match(/(?:^|; )googtrans=([^;]*)/);
+      let activeLang = 'es';
+      
+      if (match && match[1]) {
+        const parts = match[1].split('/');
+        if (parts.length >= 3 && parts[2]) {
+          activeLang = parts[2];
+        }
+      }
 
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === activeLang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function changeLanguage(langCode, btnElement) {
       if (langCode === 'es') {
         document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=." + document.domain + "; path=/;";
@@ -222,6 +241,8 @@
       
       location.reload();
     }
+
+    document.addEventListener('DOMContentLoaded', syncActiveLanguageButton);
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
