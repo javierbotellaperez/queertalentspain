@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "nombreArtistico": "Alex Morgan",
+    "sector": "Cine, TV y Audiovisual",
+    "puestos": ["Dirección de Fotografía (DoP)", "Operador/a de Cámara"],
+    "comunidadAutonoma": "Catalunya",
+    "bio": "Dirección de fotografía enfocada en cine independiente, ficción y videoclips con narrativa visual queer.",
+    "portfolioUrl": "https://vimeo.com",
+    "fotoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+    "redes": {
+      "instagram": "@alexmorgan_dop"
+    }
+  },
+  {
+    "id": 2,
+    "nombreArtistico": "Sasha Sound",
+    "sector": "Música y Producción Sonora",
+    "puestos": ["Producción Musical", "DJ / Selector/a"],
+    "comunidadAutonoma": "Madrid",
+    "bio": "Productora musical y DJ centrada en sonidos electrónicos, hiperpop y diseño sonoro para escénicas.",
+    "portfolioUrl": "https://soundcloud.com",
+    "fotoUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80",
+    "redes": {
+      "instagram": "@sashasound"
+    }
+  },
+  {
+    "id": 3,
+    "nombreArtistico": "Luka Ríos",
+    "sector": "Danza y Artes Escénicas",
+    "puestos": ["Bailarín/a / Performer", "Coreografía"],
+    "comunidadAutonoma": "Comunitat Valenciana",
+    "bio": "Performer y coreógrafx investigando cuerpo, identidad y movimiento contemporáneo.",
+    "portfolioUrl": "https://instagram.com",
+    "fotoUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80",
+    "redes": {
+      "instagram": "@lukarios_dance"
+    }
+  }
+]profiles.json
