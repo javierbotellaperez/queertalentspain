@@ -1,21 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("talents-grid");
+// main.js - Orquestador principal de la aplicación
+document.addEventListener("DOMContentLoaded", async () => {
+  RenderService.init();
 
-  function renderCards(list) {
-    container.innerHTML = "";
-    list.forEach(talent => {
-      const card = document.createElement("article");
-      card.className = "card";
-      card.innerHTML = `
-        <img src="${talent.fotoUrl}" alt="${talent.nombre}">
-        <h3>${talent.nombre}</h3>
-        <p style="color: #666; font-size: 14px;">${talent.pronombre} • ${talent.ciudad} (${talent.comunidad})</p>
-        <span class="tag">${talent.categoria}</span>
-        <p style="margin-top: 12px; font-size: 14px;">${talent.bio}</p>
-      `;
-      container.appendChild(card);
-    });
+  // 1. Cargar datos
+  const allTalents = await ApiService.fetchTalents();
+
+  // 2. Render inicial
+  RenderService.renderGrid(allTalents);
+
+  // 3. Capturar elementos de filtro
+  const searchInput = document.getElementById("search-input");
+  const categorySelect = document.getElementById("filter-category");
+  const regionSelect = document.getElementById("filter-region");
+
+  // 4. Función de actualización por filtros
+  function handleFilterChange() {
+    const filters = {
+      searchText: searchInput.value,
+      category: categorySelect.value,
+      region: regionSelect.value
+    };
+
+    const filteredTalents = FilterService.filterTalents(allTalents, filters);
+    RenderService.renderGrid(filteredTalents);
   }
 
-  renderCards(MOCK_TALENTS);
+  // 5. Asignar Event Listeners
+  searchInput.addEventListener("input", handleFilterChange);
+  categorySelect.addEventListener("change", handleFilterChange);
+  regionSelect.addEventListener("change", handleFilterChange);
 });
