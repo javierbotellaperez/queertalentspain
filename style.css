@@ -1,9 +1,9 @@
 /* ==========================================================================
-   QUEER TALENT SPAIN — ESTILO EDITORIAL, BOLD & SOBRIO
+   QUEER TALENT SPAIN — ESTILO HELVÉTICO & SOBRIO
    ========================================================================== */
 
 /* --- IMPORTACIÓN DE TIPOGRAFÍAS --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 /* --- VARIABLES Y PALETA DE COLOR --- */
 :root {
@@ -14,9 +14,8 @@
   --accent-pink: #ff2a5f;     /* Magenta neón */
   --border-subtle: #e5e5e0;
   
-  /* Tipografías sobrias y rotundas */
-  --font-heading: 'Syne', system-ui, -apple-system, sans-serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Familia tipográfica Suiza / Helvética */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* --- RESET & BASE --- */
@@ -57,10 +56,10 @@ body {
 }
 
 .navbar__brand {
-  font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: 1.2rem;
-  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--text-main);
 }
@@ -75,10 +74,10 @@ body {
 
 .hero__tag {
   display: inline-block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   background: var(--text-main);
   color: #ffffff;
   padding: 0.3rem 0.8rem;
@@ -86,11 +85,11 @@ body {
 }
 
 .hero h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  font-family: var(--font-sans);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -101,7 +100,7 @@ body {
 }
 
 .hero__subtitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   max-width: 720px;
   margin: 0 auto 2.5rem;
@@ -122,10 +121,10 @@ body {
   justify-content: center;
   padding: 1rem 2rem;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -171,16 +170,16 @@ body {
 }
 
 .about__box h2 {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.01em;
   margin-bottom: 1rem;
 }
 
 .about__box p {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
   max-width: 850px;
   margin: 0 auto;
@@ -194,11 +193,11 @@ body {
 }
 
 .directory__title {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 
@@ -258,7 +257,7 @@ body {
   padding-left: 2.2rem;
   cursor: pointer;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   user-select: none;
   height: 100%;
 }
@@ -349,11 +348,11 @@ body {
 }
 
 .card__info h3 {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.15;
 }
 
@@ -374,7 +373,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-top: 0.25rem;
   display: block;
 }
@@ -390,7 +389,7 @@ body {
   background: #f0efe8;
   border: 1px solid var(--text-main);
   color: var(--text-main);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   padding: 0.25rem 0.6rem;
@@ -421,10 +420,10 @@ body {
 .card__link {
   color: var(--text-main);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   border-bottom: 2px solid var(--accent-pink);
   padding-bottom: 2px;
   transition: all 0.2s ease;
